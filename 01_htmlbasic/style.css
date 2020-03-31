@@ -1,0 +1,5 @@
+body {
+    font-family: courier;
+
+    --custom-green: rgba(107, 243, 28, 0.664);
+}
