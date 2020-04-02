@@ -1,9 +1,10 @@
 body {
-    margin: 75px 32px;
+    margin: 75px 32px 0;
     font-family: 'Quicksand', sans-serif;
     background-color: #788ACC;
     color: #2C4499;
     font-size: 23px;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -13,9 +14,11 @@ h1 {
 }
 
 footer {
-    margin:0 -32px;
+    margin:0 -33px;
     background-color: black;
     color: white;
+    padding: 1px;
+    font-size: 17px;
 }
 
 .footerText {
@@ -40,4 +43,35 @@ a:hover {
 
 .small {
     font-size: 12px;
+    margin-top: 30px;
+}
+
+img {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #FFAC7B;
+}
+
+span {
+    font-family: 'Fredericka the Great', cursive;
+    color: white;
+}
+
+.uno {
+    color: #FFAC7B;
+}
+
+.boxed {
+    border-style: solid;
+    border-width: 1px;
+    padding: 1px 5px;
+}
+
+.boxed.blue {
+    background-color: #2C4499;
+}
+
+.boxed.orange {
+    background-color: #FFAC7B;
 }
