@@ -1,5 +1,66 @@
+/* Main Content */
 body {
     font-family: courier;
+    background-color: rgba(107, 243, 28, 0.664);
+    overflow-x: hidden;
+    margin: 0;
+}
 
-    --custom-green: rgba(107, 243, 28, 0.664);
+header {
+    background-color: white;
+    display: flex;
+    padding: 0px 10px;
+}
+
+div.mainContent {
+    text-align: center;
+}
+
+img.mainImage {
+    width: 50%;
+}
+
+table {
+    width: 100%;
+}
+
+img.tableImage {
+    width: 70%;
+}
+
+div.listBox {
+    padding: 20px;
+    background-color: coral;
+}
+
+/* Nav Bar */
+ul.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+ul.navBar li {
+    float: left;
+}
+
+ul.navBar li a{
+    display: block;
+    color: black;
+    width: 160px;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+ul.navBar li a:hover:not(.active) {
+    background-color: rgba(107, 243, 28, 0.2);
+}
+
+.active {
+    background-color: rgba(107, 243, 28, 0.664);
+    color: white;
 }

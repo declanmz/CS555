@@ -3,22 +3,24 @@
 <head>
 	<title>Home: Declan</title>
 	<!-- image source: https://weheartit.com/entry/67565057 -->
-	<link rel="icon" href="/00_images/neff.png">
+	<link rel="icon" href="images/neff.png">
 	<link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: rgba(107, 243, 28, 0.664);">
-	<h1>Hi, I'm Declan</h1>
-	<div style="background-color: rgba(28, 243, 214, 0.658);">
-		<hr>
-		<button onclick="window.location.href = 'index.html'" title="Just the main page, you know." disabled>Home</button>
-		<button onclick="window.location.href = 'theBigList.html'" title="It's honestly pretty lame.">The Big List</button>
-		<button onclick="window.location.href = 'images.html'" title="Much better than a the big list.">Images</button>
-		<hr>
+<body>
+	<header>
+		<h1>Hi, I'm Declan</h1>
+	</header>
+	<div class="navBar">
+		<ul class="navBar">
+			<li><a href="index.html" class="active">Home</a></li>
+			<li><a href="theBigList.html">The Big List</a></li>
+			<li><a href="images.html">Images</a></li>
+		</ul>
 	</div>
-	<div style="text-align: center;">
+	<div class="mainContent">
 		<h2>Home</h2>
 		<p>Yes I am Declan. Yes I am. This is me. <br>But this isn't me. <br>This is my dog.</p>
-		<img src="/00_images/Buddy1.jpg" alt="Buddy Outside Door" style="width: 50%;" title="Woof">
+		<img src="images/Buddy1.jpg" alt="Buddy Outside Door" title="Woof" class="mainImage">
 		<p><b>Oops.</b> <br>Oh well. Say hi to Buddy then.</p>
 	</div>
 </body>
