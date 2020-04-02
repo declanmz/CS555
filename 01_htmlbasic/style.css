@@ -54,6 +54,7 @@ ul.navBar li a{
     text-decoration: none;
     font-weight: bold;
     text-align: center;
+    border-radius: 10px 10px 0px 0px;
 }
 
 ul.navBar li a:hover:not(.active) {
