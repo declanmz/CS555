@@ -1,0 +1,57 @@
+* {
+    box-sizing: margin-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: Helvetica;
+    width: 1000px;
+    margin: 0 auto;
+    color: white;
+    position: relative;
+}
+
+header {
+    text-align: right;
+    font-size: 12em;
+    padding: 100px 50px 20px;
+}
+
+.buttonGrid {
+    position: relative;
+    width: 100%;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+button {
+    background-color: #ffffff3a;
+    border: none;
+    color: white;
+    width: 22%;
+    height: 220px;
+    float: left;
+    border-radius: 110px;
+    margin: 1.5%;
+    font-size: 5em;
+}
+
+
+.lightGray {
+    background-color: #ffffffc2;
+    color: black;
+}
+
+.orange {
+    background-color: orange;
+    font-size: 7em;
+}
+
+.zero {
+    width: 47%;
+    text-align: left;
+    padding-left: 90px;
+}
