@@ -6,52 +6,65 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    font-family: Helvetica;
-    width: 1000px;
-    margin: 0 auto;
+    font-family: "SF Text";
     color: white;
-    position: relative;
+    width: 1080px;
+    margin: 0 auto;
+    font-weight: 100;
 }
 
-header {
+.grid-container {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: auto auto auto auto;
+    align-content: space-evenly;
+    margin: 40px;
+}
+
+.itemOutput {
+    grid-column: 1 / span 4;
+}
+
+h1 {
     text-align: right;
     font-size: 12em;
-    padding: 100px 50px 20px;
+    padding: 150px 50px 20px;
 }
 
-.buttonGrid {
-    position: relative;
-    width: 100%;
-    content: "";
-    display: table;
-    clear: both;
+.itemZero {
+    grid-column: 1 / span 2;
+    text-align: center;
 }
+
+.zero {
+    text-align: left;
+    padding-left: 85px;
+    width: 470px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
 
 button {
-    background-color: #ffffff3a;
+    background-color: #ffffff33;
     border: none;
     color: white;
-    width: 22%;
-    height: 220px;
-    float: left;
     border-radius: 110px;
-    margin: 1.5%;
     font-size: 5em;
+    height: 220px;
+    width: 220px;
+    font-family: "SF Text";
+    font-weight: 200;
 }
 
-
 .lightGray {
-    background-color: #ffffffc2;
+    background-color: #ffffffa2;
     color: black;
 }
 
 .orange {
     background-color: orange;
     font-size: 7em;
-}
-
-.zero {
-    width: 47%;
-    text-align: left;
-    padding-left: 90px;
 }
