@@ -52,7 +52,7 @@ button {
     border: none;
     color: white;
     border-radius: 110px;
-    font-size: 5em;
+    font-size: 6em;
     height: 220px;
     width: 220px;
     font-family: "SF Text";
@@ -67,4 +67,8 @@ button {
 .orange {
     background-color: orange;
     font-size: 7em;
+}
+
+button:hover {
+    background-color: #ffffff43;
 }
