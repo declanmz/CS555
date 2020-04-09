@@ -65,7 +65,7 @@ button {
 }
 
 .orange {
-    background-color: orange;
+    background-color: #ffa500;
     font-size: 7em;
 }
 
@@ -78,5 +78,5 @@ button:hover {
 }
 
 .orange:hover {
-    background-color: red;
+    background-color: #ffb900;
 }
