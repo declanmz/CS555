@@ -19,6 +19,7 @@ body {
     grid-template-columns: auto auto auto auto;
     align-content: space-evenly;
     margin: 40px;
+    
 }
 
 .itemOutput {
@@ -71,4 +72,12 @@ button {
 
 button:hover {
     background-color: #ffffff43;
+}
+
+.lightGray:hover {
+    background-color: #ffffffc6;
+}
+
+.orange:hover {
+    background-color: red;
 }
