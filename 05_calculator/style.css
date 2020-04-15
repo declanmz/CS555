@@ -19,6 +19,19 @@ body {
     grid-template-columns: auto auto auto auto;
     align-content: space-evenly;
     margin: 40px;
+    margin-top: 650px;
+}
+
+@media screen and (min-aspect-ratio: 411/823){
+    .grid-container {
+        margin-top: 450px;
+    }
+}
+
+@media screen and (min-aspect-ratio: 1/2){
+    .grid-container {
+        margin-top: 200px;
+    }
 }
 
 .itemOutput {
@@ -57,6 +70,9 @@ button {
     width: 220px;
     font-family: "SF Text";
     font-weight: 200;
+
+    background-position: center;
+    transition: background 0.1s;
 }
 
 .lightGray {
@@ -69,14 +85,14 @@ button {
     font-size: 7em;
 }
 
-button:hover {
+button:active {
     background-color: #ffffff43;
 }
 
-.lightGray:hover {
+.lightGray:active {
     background-color: #ffffffc6;
 }
 
-.orange:hover {
+.orange:active {
     background-color: #ffb900;
 }
