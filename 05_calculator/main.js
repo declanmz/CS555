@@ -16,7 +16,7 @@ function evalExtra(strEv){
     }
 }
 
-function last(strEv){ return strEv.charAt(strEv.length-1);} //found I needed to use this a few times, it is more readable as a function
+function last(strEv){ return strEv.charAt(strEv.length-1);} //needed to use this a few times, it is more readable as a function
 
 $(document).ready(function(){
 
