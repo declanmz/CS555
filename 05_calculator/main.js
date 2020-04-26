@@ -1,100 +1,148 @@
-
-// Need to add the percent functionality, currently it is just a modulous operator. 
+// Need to add the percent functionality, currently it is just a modulous operator.
 // Also need to make the AC button functionality better, currently it always clears everything.
 
-var ops = ["+", "*", "/", "%"];
-var preOps = ops.concat("-");
+var ops = [ '+', '-', '*', '/', '×', '÷' ];
+var displayState = false;
+var previnput;
+var prevOp;
+var lastOp;
+var evalStr;
+var displayStr;
 
-function evalExtra(strEv){
-    try {
-        if (ops.includes(last(strEv)) || last(strEv) == "-"){
-            strEv = strEv.substring(0, strEv.length-1);
-        }
-        return parseFloat(eval(strEv).toFixed(5)); //evalutes to 5 decimal places, but removes trailing zeros
-    } catch (error) {
-        return "Error";
-    }
+function evalExtra(strEv) {
+	try {
+		if (strEv == '') return '';
+		if (ops.includes(strEv.last())) {
+			strEv = strEv.substring(0, strEv.length - 1);
+		}
+		while (strEv.includes('--')) {
+			strEv = strEv.replace('--', '+');
+		}
+		var output = parseFloat(eval(strEv).toFixed(5)); //evalutes to 5 decimal places, but removes trailing zeros
+		if (output == 'Infinity' || output == '-Infinity' || isNaN(output)) throw 'bad operation';
+		return output;
+	} catch (error) {
+		return 'Error';
+	}
 }
 
-function last(strEv){ return strEv.charAt(strEv.length-1);} //needed to use this a few times, it is more readable as a function
+function lastOperator() {
+	var i = 0;
+	lastOp = -1;
 
-$(document).ready(function(){
+	for (c of evalStr) {
+		if (ops.includes(c) && !(c == '-' && i == lastOp + 1 && lastOp >= -1)) {
+			lastOp = i;
+		}
+		i++;
+	}
+}
 
-    var displayStr = ""; //string that is displayed
-    var evalStr = ""; //string which goes into the eval function, which requires operators to be changed to * and /
-    var a = ""; //concatination for the displayStr
-    var b = ""; //concatination for the evalStr
+String.prototype.last = function() {
+	return this.charAt(this.length - 1);
+}; //used this a couple times, so turned it into a method to make things more readable
 
-    $("button").click(function(){
+$(document).ready(function() {
+	displayStr = ''; //string that is displayed
+	evalStr = ''; //string which goes into the eval function, which requires operators to be changed to * and /
+	var a = ''; //concatination for the displayStr
+	var b = ''; //concatination for the evalStr
 
-        a = b = $(this).text();
+	$('button').click(function() {
+		a = b = $(this).text();
 
-        switch (b){
-            case "":
-                if (evalStr.charAt(0) == "-"){
-                    evalStr = evalStr.substring(1);
-                    displayStr = displayStr.substring(1);
-                } else {
-                    evalStr = "-" + evalStr;
-                    displayStr = "-" + displayStr;
-                }
-                break;
-            case "×":
-                b = "*";
-                break;
-            case "÷":
-                b = "/";
-                break;
-            case ".":
-                if (last(evalStr) == ".") a = b = ""; //stops errors from multiple decimal points
-                if (last(evalStr) == "" || preOps.includes(last(evalStr))){
-                    evalStr = evalStr.concat("0");
-                    displayStr = displayStr.concat("0");
-                }
-                break;
-            case "AC":
-                displayStr = evalStr = a = b = "";
-                break;
-            case "=":
-                a = b = evalExtra(evalStr);
-                displayStr = evalStr = "";
-                break;
-        }
+		lastOperator();
 
-        if(ops.includes(b) && (evalStr == "" || evalStr == "-")){
-            a = b = "";
-        }
+		switch (b) {
+			case '':
+				if (evalStr.charAt(lastOp + 1) == '-') {
+					displayStr = displayStr.substring(1);
+					evalStr = evalStr.substring(0, lastOp + 1) + evalStr.substring(lastOp + 2);
+				} else {
+					displayStr = '-' + displayStr;
+					evalStr = evalStr.substring(0, lastOp + 1) + '-' + evalStr.substring(lastOp + 1);
+				}
+				break;
+			case '×':
+				b = '*';
+				break;
+			case '÷':
+				b = '/';
+				break;
+			case '.':
+				if (evalStr.substring(lastOp).includes('.')) a = b = ''; //stops errors from multiple decimal points
+				if (evalStr.last() == '' || ops.includes(evalStr.last())) a = b = '0.';
+				break;
+			case 'C':
+				if (ops.includes(evalStr.last())) evalStr = evalStr.substring(0, evalStr.length - 1);
+				lastOperator();
+				evalStr = evalStr.substring(0, lastOp + 1);
+				displayStr = a = b = '';
+				break;
+			case 'AC':
+				evalStr = displayStr = a = b = '';
+				break;
+			case '=':
+				if (previnput == '=') {
+					evalStr = evalStr.concat(prevOp);
+				} else {
+					prevOp = evalStr.substring(lastOp);
+				}
+				a = b = evalExtra(evalStr);
+				displayStr = evalStr = '';
+				break;
+			case '%':
+				var p = parseFloat(evalStr.substring(lastOp + 1) * 0.01);
+				evalStr = evalStr.substring(0, lastOp + 1) + p;
+				displayStr = p.toString();
+				a = b = '';
+				break;
+		}
 
-        //this makes it so you can't input two operators in a row, except for the negative sign, which can be put after any operator except itself
-        if (ops.includes(b) && preOps.includes(last(evalStr)) || b == "-" && last(evalStr) == "-"){
-            var subtactor = 1;
-            if (last(evalStr) == "-" && ops.includes(evalStr.charAt(evalStr.length-2))) subtactor = 2;
-            
-            evalStr = evalStr.substring(0, evalStr.length-subtactor);
-            displayStr = displayStr.substring(0, displayStr.length-subtactor);
-        }
-        
+		if (ops.includes(b) && (evalStr == '' || evalStr == '-')) {
+			b = '0' + b;
+		}
 
-        displayStr = displayStr.concat(a);
-        evalStr = evalStr.concat(b);
+		//this makes it so you can't input two operators in a row
+		if (ops.includes(b) && ops.includes(evalStr.last())) {
+			evalStr = evalStr.substring(0, evalStr.length - 1);
+			// displayStr = displayStr.substring(0, displayStr.length - 1);
+		}
 
-        $("h1").text(displayStr);
+		if (ops.includes(a)) {
+			a = '';
+			displayState = true;
+		} else if (!ops.includes(a) && displayState) {
+			displayStr = '';
+			displayState = false;
+		}
 
-        if (displayStr == "") $("h1").text("0"); //just a placeholder for nothing
+		displayStr = displayStr.concat(a);
+		evalStr = evalStr.concat(b);
 
-        console.log(evalStr);
+		$('h1').text(displayStr);
 
-        //making the text size on the caclulator dynamic, so it always stays in the visible text area
-        if (displayStr.length > 7){
-            $("h1").css({
-                fontSize : 90/evalStr.length + "em"
-            });
-        } else {
-            $("h1").css({
-                fontSize : "12em"
-            });
-        }
-        
-    });
+		if (displayStr == '') $('h1').text('0'); //just a placeholder for nothing
 
-}); 
+		console.log(evalStr);
+
+		previnput = $(this).text();
+
+		if (evalStr == '' || previnput == 'C') {
+			$('#clear').text('AC');
+		} else {
+			$('#clear').text('C');
+		}
+
+		//making the text size on the caclulator dynamic, so it always stays in the visible text area
+		if (displayStr.length > 7) {
+			$('h1').css({
+				fontSize: 90 / evalStr.length + 'em'
+			});
+		} else {
+			$('h1').css({
+				fontSize: '12em'
+			});
+		}
+	});
+});

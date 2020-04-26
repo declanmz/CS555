@@ -1,99 +1,98 @@
 * {
-    box-sizing: margin-box;
+	box-sizing: margin-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    font-family: "SF Text";
-    color: white;
-    width: 1080px;
-    margin: 0 auto;
-    font-weight: 100;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	font-family: "SF Text";
+	color: white;
+	width: 1080px;
+	margin: 0 auto;
+	font-weight: 100;
 }
 
 .grid-container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: auto auto auto auto;
-    align-content: space-evenly;
-    margin: 40px;
-    margin-top: 650px;
+	display: grid;
+	grid-gap: 30px;
+	grid-template-columns: auto auto auto auto;
+	align-content: space-evenly;
+	margin: 40px;
+	margin-top: 650px;
 }
 
-@media screen and (min-aspect-ratio: 411/823){
-    .grid-container {
-        margin-top: 450px;
-    }
+@media screen and (min-aspect-ratio: 411/823) {
+	.grid-container {
+		margin-top: 450px;
+	}
 }
 
-@media screen and (min-aspect-ratio: 1/2){
-    .grid-container {
-        margin-top: 200px;
-    }
+@media screen and (min-aspect-ratio: 1/2) {
+	.grid-container {
+		margin-top: 200px;
+	}
 }
 
 .itemOutput {
-    grid-column: 1 / span 4;
+	grid-column: 1 / span 4;
 }
 
 h1 {
-    text-align: right;
-    font-size: 12em;
-    padding: 150px 50px 20px;
-    line-height: 200px;
+	text-align: right;
+	font-size: 12em;
+	padding: 150px 50px 20px;
+	line-height: 200px;
 }
 
 .itemZero {
-    grid-column: 1 / span 2;
-    text-align: center;
+	grid-column: 1 / span 2;
+	text-align: center;
 }
 
 .zero {
-    text-align: left;
-    padding-left: 85px;
-    width: 470px;
+	text-align: left;
+	padding-left: 85px;
+	width: 470px;
 }
 
 .grid-item {
-    text-align: center;
+	text-align: center;
 }
 
-
 button {
-    background-color: #ffffff33;
-    border: none;
-    color: white;
-    border-radius: 110px;
-    font-size: 6em;
-    height: 220px;
-    width: 220px;
-    font-family: "SF Text";
-    font-weight: 200;
+	background-color: #ffffff33;
+	border: none;
+	color: white;
+	border-radius: 110px;
+	font-size: 6em;
+	height: 220px;
+	width: 220px;
+	font-family: "SF Text";
+	font-weight: 200;
 
-    background-position: center;
-    transition: background 0.1s;
+	background-position: center;
+	transition: background 0.1s;
 }
 
 .lightGray {
-    background-color: #ffffffa6;
-    color: black;
+	background-color: #ffffffa6;
+	color: black;
 }
 
 .orange {
-    background-color: #ffa500;
-    font-size: 7em;
+	background-color: #ffa500;
+	font-size: 7em;
 }
 
 button:active {
-    background-color: #ffffff43;
+	background-color: #ffffff43;
 }
 
 .lightGray:active {
-    background-color: #ffffffc6;
+	background-color: #ffffffc6;
 }
 
 .orange:active {
-    background-color: #ffb900;
+	background-color: #ffb900;
 }
